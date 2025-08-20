@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>this is form for the radio button </h1>
+    <h3>Select your fav Language</h1>
+    
+    <form>
+
+        <input type="radio" id="html" name="fav_language" value="HTML">
+        <label for="html">HTML</label><br>
+
+        <input type="radio" id="css" name="fav_language" value="CSS">
+        <label for="css">CSS</label><br>
+
+        <input type="radio" id="javascript" name="fav_language" value="javascript">
+        <label for="javascript">JavaScript</label><br>
+
+    </form>
+
+    <h1>Pratics for the form tag </h1>
+
+    <form action="/submit" method="post">
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter name" required>
+    <br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <br><br>
+
+    Gender:
+    <input type="radio" name="gender" value="male"> Male
+    <input type="radio" name="gender" value="female"> Female
+    <br><br>
+
+    <input type="checkbox" name="subscribe" checked> Subscribe to newsletter
+    
+    <br><br>
+
+    <label for="course">Select Course:</label>
+
+    <select id="course" name="course">
+
+      <option value="html">HTML</option>
+      <option value="css">CSS</option>
+      <option value="js">JavaScript</option>
+
+    </select>
+    <br><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" cols="40"></textarea>
+    <br><br>
+
+    <label for="file">Upload File:</label>
+    <input type="file" id="file" name="file">
+    <br><br>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+
+  </form>
+
+</body>
+</html>
