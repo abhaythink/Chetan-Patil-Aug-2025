@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practic of flex box</title>
+
+    <style>
+
+       .flex-container
+       {
+            display: flex;
+            /* justify-content: space-between; */
+            border: 2px;
+            margin-bottom: 30px;
+            padding:10px;
+            background-color:blanchedalmond;
+       } 
+
+       .flex-item 
+       {
+            background: lightblue;
+            border: 2px solid navy;
+            padding: 20px;
+            margin: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .row
+        {
+            flex-direction:row
+        }
+
+        .col
+        {
+            flex-direction:column;
+        
+        }
+
+        .justify
+        {
+            justify-content: space-around;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    
+    <h1>css flexbox practice </h1>
+
+    
+    <h3>adjacent according to row </h3>
+    <div class="flex-container row">
+        <div class="flex-item">First</div>
+        <div class="flex-item">second</div>
+        <div class="flex-item">third</div>
+        <div class="flex-item">fourth</div>
+    </div>
+
+    <h3>adjacent according to column</h3>
+     <div class="flex-container col">
+        <div class="flex-item">First</div>
+        <div class="flex-item">second</div>
+        <div class="flex-item">third</div>
+        <div class="flex-item">fourth</div>
+    </div>
+
+
+    <h3>use of justify content </h3>
+
+     <h3>adjacent according to column</h3>
+     <div class="flex-container row justify">
+
+        <div class="flex-item">First</div>
+        <div class="flex-item">second</div>
+        <div class="flex-item">third</div>
+        <div class="flex-item">fourth</div>
+        
+    </div>
+
+
+</body>
+</html>
