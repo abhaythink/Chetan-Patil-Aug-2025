@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          
+    * {
+      font-family: Arial, sans-serif;  /* Universal Selector */
+    }
+
+   
+    h1 {                                 /* Type Selector */
+      color: darkblue;
+    }
+
+    
+    .highlight {                        /* Class Selector */
+      background-color: yellow;
+    }
+
+              
+    #special {                           /* ID Selector */    
+      color: red;
+      font-weight: bold;
+    }
+
+    
+    div p {                                 /* Descendant Selector */
+      color: green;
+    }
+
+    
+    ul > li {                                   /* Child Selector */
+      color: purple;
+    }
+
+    /* Pseudo-class */
+    a:hover {
+      text-decoration: underline;
+      color: blue;
+    }
+
+    </style>
+</head>
+<body>
+
+    <h1>CSS Selector Practice</h1>
+    <p>This is a normal paragraph.</p>
+
+     <div>
+    <p>Paragraph inside a div (Descendant selector)</p>
+  </div>
+
+  <h2>Shopping List</h2>
+  <ul>
+    <li>Apples</li>
+    <li>Oranges</li>
+    <li>Bananas</li>
+  </ul>
+
+  <p>This paragraph is right after h2 (Adjacent sibling selector).</p>
+
+  <a href="https://example.com" target="_blank">External Link</a><br>
+  <a href="page.html">Internal Link</a>
+
+</body>
+</html>
