@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event ---js</title>
+</head>
+<body>
+      
+    <button id="mybtn">Click me</button>
+
+    <input type="text" id="name" placeholder="Type your name">
+
+
+    <script>
+
+        let btn=document.getElementById("mybtn");
+        let input=document.getElementById("name");
+
+        btn.addEventListener("click",function()
+        {
+            alert("you clicked the button !!!");
+        })
+
+        btn.addEventListener("input",function(){
+            console.log("you typed "+ event.target.value);
+        })
+    </script>
+</body>
+</html>
