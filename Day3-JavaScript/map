@@ -1,0 +1,17 @@
+const map1= new Map();
+
+const map2=new Map([['firstName','Chetan'], ['lastName','Patil'] ]);
+
+map1.set('Mobno',9764463690);
+
+map2.set({}, 'obj');        // object as key
+
+console.log(map2.get('firstName'));
+console.log(map1.size);     // 2
+console.log(map1);
+
+
+//Keys: Map allows any type; Object keys are strings/symbols
+//Map preserves insertion order; Object order is not guaranty to preserve.
+
+//Object: no direct .length — use Object.keys(obj).length.
