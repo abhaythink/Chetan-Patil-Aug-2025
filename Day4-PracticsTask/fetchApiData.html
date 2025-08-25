@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetching Data from api  </title>
+</head>
+
+<style>
+
+
+#main{
+
+    background-color: gray;
+    margin: 20px;
+    border: 2px solid black;
+}
+
+#header{
+
+    text-align: center ;
+    color: white;
+}
+
+#lists
+{
+    margin-top: 50px;
+    margin-bottom: 5px;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding: 40px;
+    border: 3px dotted rgb(18, 8, 8);
+    background-color: rgb(151, 178, 135);
+    font-size: 20px;
+    
+}
+
+</style>
+<body>
+    
+    <div id="main">
+
+        <h1 id="header">Fetching Data From Api</h1>
+        <ul id="lists">
+
+
+        </ul>
+
+    </div>
+
+
+<script>
+
+    var resultApi;
+    let dataToBeDisplay=[];
+    async function fetchData() 
+    {
+        
+        
+        // // console.log(dataJson);
+
+
+        const url="https://jsonplaceholder.typicode.com/posts";
+
+        try
+        {
+            const res= await fetch(url);
+            
+
+            //console.log(res);
+            if(!res.ok)
+            {
+                throw new Error("there is error while fatching");
+            }
+
+            resultApi=await res.json();
+           // console.log(resultApi);
+
+           for(let k=1; resultApi.length;k++)
+            {
+
+                dataToBeDisplay+= `<li><b>Title:-</b>  ${resultApi[k].title}</li> 
+                                    <p><b>Body:- </b> ${resultApi[k].body} <p><br>`;
+
+                document.querySelector('ul').innerHTML=dataToBeDisplay;
+            }
+
+
+        }
+        catch(error)
+        {
+            console.error(error);
+        }
+
+    }
+
+    fetchData();
+
+</script>
+
+</body>
+</html>
