@@ -1,0 +1,52 @@
+package com.thinkitive.springboot_rest_api.thinkitive_restful_web_services.socialMediaApp;
+
+import java.time.LocalDate;
+
+public class User
+{
+    public User(int id, String name, LocalDate birthDate) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+    }
+
+    private int id;
+    private String name;
+    private LocalDate birthDate;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthDate=" + birthDate +
+                '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+
+
+}
