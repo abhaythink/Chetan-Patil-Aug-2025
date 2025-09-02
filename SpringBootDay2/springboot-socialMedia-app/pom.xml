@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/> <!--"Don’t look for a parent in my local folders, fetch it from Maven repositories."-->
 	</parent>
 	<groupId>com.springboot.socialmedia</groupId>
 	<artifactId>springboot-socialMedia-App</artifactId>
@@ -55,11 +55,11 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+	<build> <!-- tells Maven: this section is about how to build the project -->
+		<plugins> <!-- list of plugins we want Maven to use -->
+			<plugin>  <!-- one specific plugin -->
+				<groupId>org.springframework.boot</groupId><!-- who made it -->  <!--//Without this plugin, Maven can’t run your app directly.-->
+				<artifactId>spring-boot-maven-plugin</artifactId> <!-- which plugin -->
 			</plugin>
 		</plugins>
 	</build>

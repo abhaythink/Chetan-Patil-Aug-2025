@@ -28,9 +28,12 @@ public class PostService
         return postRepo.findAll();
     }
 
-    public Optional<Post> findPostById(Long id) {
+    public Optional<Post> findPostById(Long id)
+    {
         return postRepo.findById(id);
     }
+
+
 
     public Post addPost(PostDto postDto) {
         User user = userRepo.findById(postDto.getUserId())
@@ -58,6 +61,42 @@ public class PostService
         }
         postRepo.deleteById(id);
     }
+
+
+    public List<Post> findPostsByUserId(Long userId)    //find all post of user
+    {
+        if (!userRepo.existsById(userId)) {
+            throw new UserIsNotFoundExpection("User with ID " + userId + " not found");
+        }
+        return postRepo.findByUserId(userId);
+    }
+
+    public Post findPostByUserIdAndPostId(Long userId,Long postId)
+    {
+
+        return postRepo.findByIdAndUserId(postId, userId)
+                .orElseThrow(() -> new PostNotFoundException(
+                        "Post with ID " + postId + " not found for User " + userId));
+
+    }
+
+    public Post updateUserPost(Long userId, Long postId, PostDto postDto)
+    {
+        //update post by user// they matches the post id and user id //
+        Post post = postRepo.findByIdAndUserId(postId, userId)
+                .orElseThrow(() -> new PostNotFoundException("Post not found for this user"));
+        post.setContent(postDto.getContent());
+        return postRepo.save(post);
+    }
+
+    public void deleteUserPost(Long userId, Long postId)
+    {
+        //delete post by perticular user...
+        Post post = postRepo.findByIdAndUserId(postId, userId)
+                .orElseThrow(() -> new PostNotFoundException("Post not found for this user"));
+        postRepo.delete(post);
+    }
+
 
 
 

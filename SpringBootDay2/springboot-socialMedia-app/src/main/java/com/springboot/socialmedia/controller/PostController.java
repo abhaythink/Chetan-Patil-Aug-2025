@@ -47,4 +47,38 @@ public class PostController
         postService.deletePost(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("user/{userId}/post")       //get all the post of particular user
+    public ResponseEntity<List<Post>> getPostsByUser(@PathVariable Long userId)
+    {
+        List<Post> posts = postService.findPostsByUserId(userId);
+        return ResponseEntity.ok(posts);
+    }
+
+    @GetMapping("/user/{userId}/post/{postId}")
+    public ResponseEntity<Post> getUserPostById(@PathVariable Long userId, @PathVariable Long postId) {
+        Post post = postService.findPostByUserIdAndPostId(userId, postId);
+        return ResponseEntity.ok(post);
+    }
+
+    @PutMapping("/user/{userId}/post/{postId}")
+    public ResponseEntity<Post> updateUserPost( @PathVariable Long userId,@PathVariable Long postId,@RequestBody PostDto postDto) {
+
+        Post updatedPost = postService.updateUserPost(userId, postId, postDto);
+        return ResponseEntity.ok(updatedPost);
+    }
+
+    @DeleteMapping("/user/{userId}/post/{postId}")
+    public ResponseEntity<Void> deleteUserPost(@PathVariable Long userId,@PathVariable Long postId)
+    {
+        postService.deleteUserPost(userId, postId);
+        return ResponseEntity.noContent().build();
+    }
+
+
+
+
+
+
+
 }

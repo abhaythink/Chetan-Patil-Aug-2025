@@ -79,11 +79,11 @@ public class UserService {
 
     public void deleteUser(Long id)
     {
-        Optional<User> user=userRepo.findById(id);
+        //Optional<User> user=userRepo.findById(id);
 
-//        User existingUser=user.get();
-//        userRepo.delete(existingUser);
-        userRepo.deleteById(id);
+        User user = userRepo.findById(id)
+                .orElseThrow(() -> new UserIsNotFoundExpection("User with ID " + id + " not found"));
+        userRepo.delete(user);
     }
 
 

@@ -2,6 +2,8 @@ package com.springboot.socialmedia.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "posts")
 public class Post
@@ -10,12 +12,29 @@ public class Post
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
+
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
+
+
+
     public Long getId() {
         return id;
     }
@@ -41,6 +60,8 @@ public class Post
     }
 
          // this is means which user created this post
+
+
 
 
 }
