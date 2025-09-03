@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/users")
 public class UserController
 {
 
@@ -22,13 +22,13 @@ public class UserController
         this.userService=userService;
     }
 
-    @GetMapping("/user")
+    @GetMapping
     public ResponseEntity<List<User>> getAllUser()
     {
         return ResponseEntity.ok(userService.getAllUser());
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<User>> findUserById(@PathVariable Long id)
     {
         Optional<User> user = userService.findUserById(id);
@@ -39,7 +39,7 @@ public class UserController
 //                    .orElse(ResponseEntity.notFound().build()); //404
     }
 
-    @PostMapping("/user")
+    @PostMapping
     public ResponseEntity<User> addUser(@Valid @RequestBody UserDto userDto)
     {
         User addedUser = userService.addUser(userDto);
@@ -49,14 +49,14 @@ public class UserController
     }
 
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody UserDto userDto)
     {
         User updatedUser = userService.updateUser(id, userDto);
         return ResponseEntity.ok(updatedUser);
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id)
     {
         userService.deleteUser(id);

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 @RestController
-@RequestMapping
+@RequestMapping("/api/posts")
 public class PostController
 {
     private final PostService postService;
@@ -19,56 +19,56 @@ public class PostController
         this.postService = postService;
     }
 
-    @GetMapping("/post")
+    @GetMapping
     public ResponseEntity<List<Post>> getAllPosts() {
         return ResponseEntity.ok(postService.getAllPosts());
     }
 
-    @GetMapping("/post/{id}")
+    @GetMapping("/{postId}")
     public Optional<Post> findPostById(@PathVariable Long id) {
         return postService.findPostById(id);
     }
 
-    @PostMapping("/post")
+    @PostMapping
     public ResponseEntity<Post> addPost(@Valid @RequestBody PostDto postDto) {
         Post addedPost = postService.addPost(postDto);
         return ResponseEntity.status(201).body(addedPost);
     }
 
 
-    @PutMapping("/post/{id}")
+    @PutMapping("/{postId}")
     public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody PostDto postDto) {
         Post updatedPost = postService.updatePost(id, postDto);
         return ResponseEntity.ok(updatedPost);
     }
 
-    @DeleteMapping("/post/{id}")
+    @DeleteMapping("/{postId}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         postService.deletePost(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("user/{userId}/post")       //get all the post of particular user
+    @GetMapping("/{userId}/posts")       //get all the post of particular user
     public ResponseEntity<List<Post>> getPostsByUser(@PathVariable Long userId)
     {
         List<Post> posts = postService.findPostsByUserId(userId);
         return ResponseEntity.ok(posts);
     }
 
-    @GetMapping("/user/{userId}/post/{postId}")
+    @GetMapping("/{userId}/posts/{postId}")
     public ResponseEntity<Post> getUserPostById(@PathVariable Long userId, @PathVariable Long postId) {
         Post post = postService.findPostByUserIdAndPostId(userId, postId);
         return ResponseEntity.ok(post);
     }
 
-    @PutMapping("/user/{userId}/post/{postId}")
+    @PutMapping("/{userId}/posts/{postId}")
     public ResponseEntity<Post> updateUserPost( @PathVariable Long userId,@PathVariable Long postId,@RequestBody PostDto postDto) {
 
         Post updatedPost = postService.updateUserPost(userId, postId, postDto);
         return ResponseEntity.ok(updatedPost);
     }
 
-    @DeleteMapping("/user/{userId}/post/{postId}")
+    @DeleteMapping("/{userId}/posts/{postId}")
     public ResponseEntity<Void> deleteUserPost(@PathVariable Long userId,@PathVariable Long postId)
     {
         postService.deleteUserPost(userId, postId);
